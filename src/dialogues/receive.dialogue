@@ -1,0 +1,9 @@
+~ receive
+
+if StateManager.get_instance().is_grass_taken:
+	Thank you!
+	do StateManager.get_instance().reunite_grass()
+else:
+	Where is my grass???
+
+=> END
