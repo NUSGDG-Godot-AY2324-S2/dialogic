@@ -1,0 +1,10 @@
+~ option
+
+Take this piece of plant?
+- Yes
+	Please put this on the other side.
+	do StateManager.get_instance().take_grass()
+- No
+	Please pick up the plant! 
+
+=> END

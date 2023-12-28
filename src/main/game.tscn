@@ -1,11 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://fsbub6131u7h"]
+[gd_scene load_steps=5 format=3 uid="uid://fsbub6131u7h"]
 
+[ext_resource type="Script" path="res://main/game.gd" id="1_iiufg"]
 [ext_resource type="PackedScene" uid="uid://57dem465h7ib" path="res://map/map.tscn" id="1_xva25"]
 [ext_resource type="PackedScene" uid="uid://csbdyvffevrh3" path="res://player/player.tscn" id="2_nircy"]
+[ext_resource type="PackedScene" uid="uid://m5wbeqyr1tbl" path="res://dialogues/trigger.tscn" id="4_g0eqq"]
 
 [node name="game" type="Node2D"]
+script = ExtResource("1_iiufg")
 
 [node name="map" parent="." instance=ExtResource("1_xva25")]
 
 [node name="player" parent="." instance=ExtResource("2_nircy")]
 position = Vector2(61, 90)
+
+[node name="StartDialogueTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="grass" parent="." instance=ExtResource("4_g0eqq")]
+position = Vector2(461, 352)
+dialogue_name = "option"
+
+[node name="second_grass" parent="." instance=ExtResource("4_g0eqq")]
+position = Vector2(1008, 369)
+dialogue_name = "receive"
+
+[connection signal="timeout" from="StartDialogueTimer" to="." method="_on_start_dialogue_timer_timeout"]
